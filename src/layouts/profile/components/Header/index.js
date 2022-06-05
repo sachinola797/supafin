@@ -42,7 +42,7 @@ import breakpoints from "assets/theme/base/breakpoints";
 import styles from "layouts/profile/components/Header/styles";
 
 // Images
-import burceMars from "assets/images/bruce-mars.jpg";
+import defaultImage from "assets/images/default-image.jpeg";
 import { useAuth } from "../../../../auth-context/auth.context";
 
 function Header() {
@@ -81,7 +81,7 @@ function Header() {
         <Grid container spacing={3} alignItems="center">
           <Grid item>
             <SuiAvatar
-              src={burceMars}
+              src={defaultImage}
               alt="profile-image"
               variant="rounded"
               size="xl"

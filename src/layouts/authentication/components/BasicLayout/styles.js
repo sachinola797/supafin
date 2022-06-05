@@ -35,7 +35,7 @@ export default makeStyles(({ palette, functions, borders }) => {
       width: "calc(100% - 2rem)",
       minHeight: "50vh",
       margin: pxToRem(16),
-      padding: `${pxToRem(48)} 0 ${pxToRem(224)}`,
+      padding: `${pxToRem(48)} 0 ${pxToRem(300)}`,
       borderRadius: borderRadius.lg,
     },
   };

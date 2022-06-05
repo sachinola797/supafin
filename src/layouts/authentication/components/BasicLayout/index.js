@@ -44,8 +44,8 @@ function BasicLayout({ title, description, image, children }) {
       <DefaultNavbar routes={routes} action={false} transparent light />
       <SuiBox customClass={classes.basicLayout}>
         <Grid container spacing={3} justifyContent="center" className="text-center">
-          <Grid item xs={10} lg={4}>
-            <SuiBox mt={6} mb={1}>
+          <Grid item xs={10} lg={8}>
+            <SuiBox mt={2} mb={1}>
               <SuiTypography variant="h1" textColor="white" fontWeight="bold">
                 {title}
               </SuiTypography>
@@ -58,7 +58,7 @@ function BasicLayout({ title, description, image, children }) {
           </Grid>
         </Grid>
       </SuiBox>
-      <SuiBox mt={{ xs: -26, lg: -24 }} px={1} width="calc(100% - 2rem)" mx="auto">
+      <SuiBox mt={{ xs: -38, lg: -36 }} px={1} width="calc(100% - 2rem)" mx="auto">
         <Grid container spacing={1} justifyContent="center">
           <Grid item xs={11} sm={9} md={6} lg={5} xl={5} mb={4}>
             {children}

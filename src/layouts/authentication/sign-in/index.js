@@ -31,7 +31,7 @@ import SuiButton from "components/SuiButton";
 import CoverLayout from "layouts/authentication/components/CoverLayout";
 
 // Images
-import curved9 from "assets/images/curved-images/curved-6.jpg";
+import curved9 from "assets/images/sign-in.jpg";
 
 import { useAuth } from "../../../auth-context/auth.context";
 import AuthApi from "../../../api/auth";

@@ -40,7 +40,7 @@ function CoverLayout({ color, header, title, description, image, top, children }
   const classes = styles({ image });
 
   return (
-    <PageLayout background="white">
+    <PageLayout background="#FCFAF9">
       <DefaultNavbar routes={routes} action={false} />
       <Grid container justifyContent="center" className={classes.coverLayout}>
         <Grid item xs={11} sm={8} md={5} xl={3}>

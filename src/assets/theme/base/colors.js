@@ -21,12 +21,12 @@ Coded by www.creative-tim.com
 
 export default {
   background: {
-    default: "#f8f9fa",
+    default: "#FCFAF9",
   },
 
   text: {
-    main: "#67748e",
-    focus: "#67748e",
+    main: "#043c54",
+    focus: "#043c54",
   },
 
   transparent: {
@@ -79,8 +79,8 @@ export default {
   },
 
   dark: {
-    main: "#344767",
-    focus: "#344767",
+    main: "#043c54",
+    focus: "#043c54",
   },
 
   grey: {
@@ -107,8 +107,8 @@ export default {
     },
 
     info: {
-      main: "#2152ff",
-      state: "#21d4fd",
+      main: "#043c54",
+      state: "#043c54",
     },
 
     success: {
