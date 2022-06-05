@@ -7,7 +7,8 @@ import SweetAlert from "react-bootstrap-sweetalert";
 export const ProtectedRoute = ({ ...rest }) => {
   const history = useHistory();
   let { user } = useAuth();
-  if (!user || !user.token || user.token === "") {
+  // if (!user || !user.token || user.token === "") {
+  if (!user) {
     return (
       <SweetAlert
         title="You must be signed in!"

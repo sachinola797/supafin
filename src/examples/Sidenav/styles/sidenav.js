@@ -39,7 +39,7 @@ export default makeStyles(
       },
 
       sidenav_header: {
-        padding: `${pxToRem(24)} ${pxToRem(32)} ${pxToRem(8)}`,
+        padding: `${pxToRem(8)} ${pxToRem(52)} ${pxToRem(8)}`,
         textAlign: "center",
 
         "& a": {
@@ -50,7 +50,8 @@ export default makeStyles(
       },
 
       sidenav_logo: {
-        width: pxToRem(32),
+        // height: pxToRem(50),
+        width: "100%",
       },
 
       sidenav_logoLabel: {

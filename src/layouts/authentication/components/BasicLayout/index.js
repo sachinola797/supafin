@@ -28,7 +28,7 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import PageLayout from "examples/LayoutContainers/PageLayout";
 
 // Authentication layout components
-import Footer from "layouts/authentication/components/Footer";
+// import Footer from "layouts/authentication/components/Footer";
 
 // Custom styles for the BaiseLayout
 import styles from "layouts/authentication/components/BasicLayout/styles";
@@ -41,16 +41,7 @@ function BasicLayout({ title, description, image, children }) {
 
   return (
     <PageLayout>
-      <DefaultNavbar
-        routes={routes}
-        action={{
-          type: "external",
-          route: "https://appseed.us/product/node-js-react-soft-dashboard",
-          label: "free download",
-        }}
-        transparent
-        light
-      />
+      <DefaultNavbar routes={routes} action={false} transparent light />
       <SuiBox customClass={classes.basicLayout}>
         <Grid container spacing={3} justifyContent="center" className="text-center">
           <Grid item xs={10} lg={4}>
@@ -69,12 +60,11 @@ function BasicLayout({ title, description, image, children }) {
       </SuiBox>
       <SuiBox mt={{ xs: -26, lg: -24 }} px={1} width="calc(100% - 2rem)" mx="auto">
         <Grid container spacing={1} justifyContent="center">
-          <Grid item xs={11} sm={9} md={5} lg={4} xl={3}>
+          <Grid item xs={11} sm={9} md={6} lg={5} xl={5} mb={4}>
             {children}
           </Grid>
         </Grid>
       </SuiBox>
-      <Footer />
     </PageLayout>
   );
 }

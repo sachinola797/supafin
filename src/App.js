@@ -30,14 +30,9 @@ import { StylesProvider, jssPreset } from "@mui/styles";
 // @mui material components
 import { ThemeProvider, StyledEngineProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import Icon from "@mui/material/Icon";
-
-// Soft UI Dashboard PRO React components
-import SuiBox from "components/SuiBox";
 
 // Soft UI Dashboard PRO React example components
 import Sidenav from "examples/Sidenav";
-import Configurator from "examples/Configurator";
 
 // Soft UI Dashboard PRO React themes
 import theme from "assets/theme";
@@ -56,8 +51,8 @@ import createCache from "@emotion/cache";
 import { ProtectedRoute } from "./ProtectedRoute";
 
 export default function App() {
-  const [controller, dispatch] = useSoftUIController();
-  const { direction, layout, openConfigurator } = controller;
+  const [controller] = useSoftUIController();
+  const { direction, layout } = controller;
   const [rtlCache, setRtlCache] = useState(null);
   const { pathname } = useLocation();
 
@@ -76,11 +71,6 @@ export default function App() {
 
     setRtlCache(cacheRtl);
   }, []);
-
-  // Change the openConfigurator state
-  const handleConfiguratorOpen = () => {
-    dispatch({ type: "OPEN_CONFIGURATOR", value: !openConfigurator });
-  };
 
   // Setting the dir attribute for the body element
   useEffect(() => {
@@ -109,42 +99,12 @@ export default function App() {
       return null;
     });
 
-  const configsButton = (
-    <SuiBox
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      width="3.5rem"
-      height="3.5rem"
-      backgroundColor="white"
-      boxShadow="sm"
-      borderRadius="50%"
-      position="fixed"
-      right="2rem"
-      bottom="2rem"
-      zIndex={99}
-      customClass="cursor-pointer"
-      onClick={handleConfiguratorOpen}
-    >
-      <Icon className=" text-dark" fontSize="default">
-        settings
-      </Icon>
-    </SuiBox>
-  );
-
   return direction === "rtl" ? (
     <CacheProvider value={rtlCache}>
       <StylesProvider jss={jss}>
         <ThemeProvider theme={themeRTL}>
           <CssBaseline />
-          {layout === "dashboard" && (
-            <>
-              <Sidenav routes={routes} />
-              <Configurator />
-              {configsButton}
-            </>
-          )}
-          {layout === "vr" && <Configurator />}
+          {layout === "dashboard" && <Sidenav routes={routes} />}
           <Switch>
             {getRoutes(routes)}
             <Redirect from="*" to="/authentication/sign-in" />
@@ -156,14 +116,7 @@ export default function App() {
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {layout === "dashboard" && (
-          <>
-            <Sidenav routes={routes} />
-            <Configurator />
-            {configsButton}
-          </>
-        )}
-        {layout === "vr" && <Configurator />}
+        {layout === "dashboard" && <Sidenav routes={routes} />}
         <Switch>
           {getRoutes(routes)}
           <Redirect from="*" to="/dashboard" />

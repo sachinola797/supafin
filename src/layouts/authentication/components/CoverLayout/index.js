@@ -28,7 +28,7 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import PageLayout from "examples/LayoutContainers/PageLayout";
 
 // Authentication layout components
-import Footer from "layouts/authentication/components/Footer";
+// import Footer from "layouts/authentication/components/Footer";
 
 // Custom styles for the Baise
 import styles from "layouts/authentication/components/CoverLayout/styles";
@@ -41,15 +41,7 @@ function CoverLayout({ color, header, title, description, image, top, children }
 
   return (
     <PageLayout background="white">
-      <DefaultNavbar
-        routes={routes}
-        action={{
-          type: "external",
-          route: "https://appseed.us/product/node-js-react-soft-dashboard",
-          label: "free download",
-          color: "dark",
-        }}
-      />
+      <DefaultNavbar routes={routes} action={false} />
       <Grid container justifyContent="center" className={classes.coverLayout}>
         <Grid item xs={11} sm={8} md={5} xl={3}>
           <SuiBox mt={top}>
@@ -83,7 +75,7 @@ function CoverLayout({ color, header, title, description, image, top, children }
           </SuiBox>
         </Grid>
       </Grid>
-      <Footer />
+      {/*<Footer />*/}
     </PageLayout>
   );
 }

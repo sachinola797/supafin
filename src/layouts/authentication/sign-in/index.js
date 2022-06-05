@@ -54,7 +54,7 @@ function SignIn() {
     if (event) {
       event.preventDefault();
     }
-    if (user && user.token) {
+    if (user) {
       return history.push("/dashboard");
     }
     if (email === "") {
@@ -65,28 +65,22 @@ function SignIn() {
     }
     setButtonText("Signing in");
     try {
-      let response = await AuthApi.Login({
-        email,
-        password,
-      });
-      if (response.data && response.data.success === false) {
-        return setError(response.data.msg);
+      let response = await AuthApi.Login({ email, password });
+      if (!response) {
+        return setError("Unable to login");
       }
       return setProfile(response);
     } catch (err) {
-      console.log(err);
       setButtonText("Sign in");
-      if (err.response) {
-        return setError(err.response.data.msg);
+      if (err.message) {
+        return setError(err.message);
       }
       return setError("There has been an error.");
     }
   };
 
   const setProfile = async (response) => {
-    let user = { ...response.data.user };
-    user.token = response.data.token;
-    user = JSON.stringify(user);
+    let user = JSON.stringify(response);
     setUser(user);
     localStorage.setItem("user", user);
     return history.push("/dashboard");
@@ -94,8 +88,8 @@ function SignIn() {
 
   return (
     <CoverLayout
-      title="React Node Soft Dashboard"
-      description={`${user && user.token ? "" : "Enter your email and password to sign in"}`}
+      title="Welcome back to Supafin"
+      // description={`${user && user.token ? "" : "Enter your email and password to sign in"}`}
       image={curved9}
     >
       {user && user.token ? (

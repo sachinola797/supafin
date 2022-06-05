@@ -27,7 +27,7 @@ import Icon from "@mui/material/Icon";
 
 // Soft UI Dashboard React components
 import SuiBox from "components/SuiBox";
-import SuiTypography from "components/SuiTypography";
+// import SuiTypography from "components/SuiTypography";
 import SuiButton from "components/SuiButton";
 
 // Soft UI Dashboard React example components
@@ -39,6 +39,8 @@ import breakpoints from "assets/theme/base/breakpoints";
 
 // Custom styles for DashboardNavbar
 import styles from "examples/Navbars/DefaultNavbar/styles/defaultNavbar";
+import SupafinLogo from "../../../assets/images/supafin-logo.png";
+import SupafinLogoWhite from "../../../assets/images/supafin-logo-white.png";
 
 function DefaultNavbar({ transparent, light, action }) {
   const classes = styles({ transparent, light });
@@ -80,10 +82,19 @@ function DefaultNavbar({ transparent, light, action }) {
         py={1}
         px={{ xs: transparent ? 4 : 5, sm: transparent ? 2 : 5, lg: transparent ? 0 : 5 }}
       >
-        <SuiBox component={Link} to="/" py={transparent ? 1.5 : 0.75}>
-          <SuiTypography variant="button" fontWeight="bold" textColor={light ? "white" : "dark"}>
-            Soft UI Dashboard
-          </SuiTypography>
+        <SuiBox component={Link} to="/" height={50}>
+          <SuiBox
+            component="img"
+            src={light ? SupafinLogoWhite : SupafinLogo}
+            // py={transparent ? 1.5 : 0.75}
+            alt="Supafin Logo"
+            // customClass={classes.sidenav_logo}
+            width={100}
+            height={50}
+          />
+          {/*<SuiTypography variant="button" fontWeight="bold" textColor={light ? "white" : "dark"}>*/}
+          {/*  Supafin*/}
+          {/*</SuiTypography>*/}
         </SuiBox>
         <SuiBox color="inherit" display={{ xs: "none", lg: "flex" }} m={0} p={0}>
           <DefaultNavbarLink

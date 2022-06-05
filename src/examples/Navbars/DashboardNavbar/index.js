@@ -49,7 +49,7 @@ import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
 function DashboardNavbar({ absolute, light, isMini }) {
   const [navbarType, setNavbarType] = useState();
   const [controller, dispatch] = useSoftUIController();
-  const { miniSidenav, transparentNavbar, fixedNavbar, openConfigurator } = controller;
+  const { miniSidenav, transparentNavbar, fixedNavbar } = controller;
   const [openMenu, setOpenMenu] = useState(false);
   const classes = styles({ transparentNavbar, absolute, light, isMini });
   const route = useLocation().pathname.split("/").slice(1);
@@ -84,8 +84,6 @@ function DashboardNavbar({ absolute, light, isMini }) {
   }, [dispatch, fixedNavbar]);
 
   const handleMiniSidenav = () => dispatch({ type: "MINI_SIDENAV", value: !miniSidenav });
-  const handleConfiguratorOpen = () =>
-    dispatch({ type: "OPEN_CONFIGURATOR", value: !openConfigurator });
   const handleOpenMenu = (event) => setOpenMenu(event.currentTarget);
   const handleCloseMenu = () => setOpenMenu(false);
 
@@ -158,13 +156,6 @@ function DashboardNavbar({ absolute, light, isMini }) {
                 onClick={handleMiniSidenav}
               >
                 <Icon>{miniSidenav ? "menu_open" : "menu"}</Icon>
-              </IconButton>
-              <IconButton
-                color="inherit"
-                className={classes.navbar_icon_button}
-                onClick={handleConfiguratorOpen}
-              >
-                <Icon>settings</Icon>
               </IconButton>
               <IconButton
                 color="inherit"

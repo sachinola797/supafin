@@ -30,8 +30,6 @@ import SuiButton from "components/SuiButton";
 
 // Authentication layout components
 import BasicLayout from "layouts/authentication/components/BasicLayout";
-import Socials from "layouts/authentication/components/Socials";
-import Separator from "layouts/authentication/components/Separator";
 
 // Images
 import curved6 from "assets/images/curved-images/curved14.jpg";
@@ -41,21 +39,24 @@ import { useHistory } from "react-router-dom";
 
 function SignUp() {
   const history = useHistory();
-  const [agreement, setAgremment] = useState(true);
-  const [firstName, setName] = useState("");
+  const [agreement, setAgreement] = useState(true);
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [website, setWebsite] = useState("");
+  const [country, setCountry] = useState("");
+  const [company, setCompany] = useState("");
   const [buttonText, setButtonText] = useState("Sign up");
   const [error, setError] = useState(undefined);
 
-  const handleSetAgremment = () => setAgremment(!agreement);
+  const handleSetAgremment = () => setAgreement(!agreement);
 
   const register = async (event) => {
     if (event) {
       event.preventDefault();
     }
-    if (firstName === "") {
-      return setError("You must enter your first name.");
+    if (name === "") {
+      return setError("You must enter your name.");
     }
     if (email === "") {
       return setError("You must enter your email.");
@@ -63,45 +64,45 @@ function SignUp() {
     if (password === "") {
       return setError("You must enter a password.");
     }
+    if (website === "") {
+      return setError("You must enter your website.");
+    }
+    if (country === "") {
+      return setError("You must enter your country.");
+    }
+    if (company === "") {
+      return setError("You must enter your company name.");
+    }
     try {
       setButtonText("Signing up");
       let response = await AuthApi.Register({
-        username: firstName,
+        name,
         email,
         password,
+        website,
+        country,
+        company,
       });
-      if (response.data && response.data.success === false) {
+      if (!response.user) {
         setButtonText("Sign up");
-        return setError(response.data.msg);
+        return setError("There has been an error.");
       }
       return history.push("/authentication/sign-in");
     } catch (err) {
       console.log(err);
       setButtonText("Sign up");
-      if (err.response) {
-        return setError(err.response.data.msg);
-      }
-      return setError("There has been an error.");
+      return setError(err.toString());
     }
   };
 
   return (
     <BasicLayout
-      title="Welcome!"
-      description="Use these awesome forms to login or create new account in your project for free."
+      title="Welcome to Supafin"
+      // description="Use these awesome forms to login or create new account in your project for free."
       image={curved6}
     >
-      <Card>
-        <SuiBox p={3} mb={1} textAlign="center">
-          <SuiTypography variant="h5" fontWeight="medium">
-            Register with
-          </SuiTypography>
-        </SuiBox>
-        <SuiBox mb={2}>
-          <Socials />
-        </SuiBox>
-        <Separator />
-        <SuiBox pt={2} pb={3} px={3}>
+      <Card mb={4}>
+        <SuiBox p={3}>
           <SuiBox component="form" role="form">
             <SuiBox mb={2}>
               <SuiInput
@@ -130,6 +131,33 @@ function SignUp() {
                 }}
                 type="password"
                 placeholder="Password"
+              />
+            </SuiBox>
+            <SuiBox mb={2}>
+              <SuiInput
+                onChange={(event) => {
+                  setCompany(event.target.value);
+                  setError(undefined);
+                }}
+                placeholder="Company Name"
+              />
+            </SuiBox>
+            <SuiBox mb={2}>
+              <SuiInput
+                onChange={(event) => {
+                  setWebsite(event.target.value);
+                  setError(undefined);
+                }}
+                placeholder="Website"
+              />
+            </SuiBox>
+            <SuiBox mb={2}>
+              <SuiInput
+                onChange={(event) => {
+                  setCountry(event.target.value);
+                  setError(undefined);
+                }}
+                placeholder="Country"
               />
             </SuiBox>
             <SuiBox display="flex" alignItems="center">

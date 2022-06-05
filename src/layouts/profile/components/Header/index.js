@@ -33,7 +33,7 @@ import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 // Soft UI Dashboard PRO React icons
 import Cube from "examples/Icons/Cube";
 import Document from "examples/Icons/Document";
-import Settings from "examples/Icons/Settings";
+// import Settings from "examples/Icons/Settings";
 
 // Soft UI Dashboard PRO React base styles
 import breakpoints from "assets/theme/base/breakpoints";
@@ -43,11 +43,13 @@ import styles from "layouts/profile/components/Header/styles";
 
 // Images
 import burceMars from "assets/images/bruce-mars.jpg";
+import { useAuth } from "../../../../auth-context/auth.context";
 
 function Header() {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
   const [tabValue, setTabValue] = useState(0);
   const classes = styles();
+  const { user } = useAuth();
 
   useEffect(() => {
     // A function that sets the orientation state of the tabs.
@@ -89,10 +91,10 @@ function Header() {
           <Grid item>
             <SuiBox height="100%" mt={0.5} lineHeight={1}>
               <SuiTypography variant="h5" fontWeight="medium">
-                Alex Thompson
+                {user.idToken.payload.name}
               </SuiTypography>
               <SuiTypography variant="button" textColor="text" fontWeight="medium">
-                CEO / Co-Founder
+                {user.idToken.payload.company}
               </SuiTypography>
             </SuiBox>
           </Grid>
@@ -106,7 +108,7 @@ function Header() {
               >
                 <Tab label="App" icon={<Cube />} />
                 <Tab label="Message" icon={<Document />} />
-                <Tab label="Settings" icon={<Settings />} />
+                {/*<Tab label="Settings" icon={<Settings />} />*/}
               </Tabs>
             </AppBar>
           </Grid>
