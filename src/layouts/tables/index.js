@@ -54,7 +54,7 @@ function Tables() {
         </SuiBox>
         <Card>
           <SuiBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-            <SuiTypography variant="h6">Projects table</SuiTypography>
+            <SuiTypography variant="h6">Clients table</SuiTypography>
           </SuiBox>
           <SuiBox customClass={classes.tables_table}>
             <Table columns={prCols} rows={prRows} />
